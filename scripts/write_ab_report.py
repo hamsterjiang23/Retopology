@@ -60,7 +60,7 @@ def main() -> int:
             {"method": "instant_meshes", "status": "SUCCESS", "evidence": "official Windows binary batch CLI; raw/controlled × low/medium all exit 0"},
             {"method": "quadri_flow", "status": "SUCCESS", "evidence": "official source cloned and built in WSL; raw/controlled × low/medium all exit 0"},
             {"method": "blender_quadriflow", "status": "FAILED", "evidence": "Blender 4.5.11 operator CANCELLED on all four inputs"},
-            {"method": "sato_tokenizer", "status": "COMPONENT_TESTED", "evidence": "official test_tokenizer.py: 17 tests OK; no generator/checkpoint released"},
+            {"method": "sato_tokenizer", "status": "COMPONENT_TESTED_RESOURCE_BLOCKED", "evidence": "official test_tokenizer.py: 17 tests OK; raw/controlled full Meshy tokenizer smoke exceeded four minutes at about 2.1GB RAM; no generator/checkpoint released"},
             {"method": "meshmosaic", "status": "ENV_BLOCKED", "evidence": "official repo cloned; README release todo still lists checkpoints/inference/preprocessing/training"},
             {"method": "meshflow", "status": "ENV_BLOCKED", "evidence": "official pins were unsatisfiable; corrected torch 2.7.1/torchvision 0.22.1 CUDA install was attempted but stalled before torch import, and HF facebook/meshflow denied access: Mac HTTP 403, Windows HTTP 401"},
             {"method": "lato2", "status": "ENV_BLOCKED", "evidence": "Mac MPS smoke failed on missing TRELLIS o_voxel custom extension"},

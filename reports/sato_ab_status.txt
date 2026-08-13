@@ -1,0 +1,2 @@
+STATUS=FAILED
+NOTE=SATO tokenizer raw/controlled full Meshy A/B exceeded 4-minute smoke budget and reached ~2.1GB RAM without report; official tokenizer unit tests on released demos pass 17/17

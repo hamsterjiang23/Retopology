@@ -19,8 +19,8 @@
     },
     {
       "method": "sato_tokenizer",
-      "status": "COMPONENT_TESTED",
-      "evidence": "official test_tokenizer.py: 17 tests OK; no generator/checkpoint released"
+      "status": "COMPONENT_TESTED_RESOURCE_BLOCKED",
+      "evidence": "official test_tokenizer.py: 17 tests OK; raw/controlled full Meshy tokenizer smoke exceeded four minutes at about 2.1GB RAM; no generator/checkpoint released"
     },
     {
       "method": "meshmosaic",

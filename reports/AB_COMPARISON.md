@@ -6,10 +6,10 @@
 
 | 方法 | 输入线 | 预算 | 状态 | 顶点 | 三角形 | Quad ratio | 组件 | Chamfer | Hausdorff p99 | 时间(s) |
 |---|---|---|---|---:|---:|---:|---:|---:|---:|---:|
-| blender_quadriflow | raw | low_faces | FAILED | — | — | — | — | — | — | 1.058800 |
-| blender_quadriflow | raw | medium_faces | FAILED | — | — | — | — | — | — | 1.052700 |
-| blender_quadriflow | controlled | low_faces | FAILED | — | — | — | — | — | — | 0.779800 |
-| blender_quadriflow | controlled | medium_faces | FAILED | — | — | — | — | — | — | 0.752800 |
+| blender_quadriflow | raw | low_faces | FAILED | — | — | — | — | — | — | 4.614000 |
+| blender_quadriflow | raw | medium_faces | FAILED | — | — | — | — | — | — | 1.053900 |
+| blender_quadriflow | controlled | low_faces | FAILED | — | — | — | — | — | — | 0.791600 |
+| blender_quadriflow | controlled | medium_faces | FAILED | — | — | — | — | — | — | 0.761500 |
 | instant_meshes | controlled | low_faces | SUCCESS | 6796.000000 | 12920.000000 | 1.000000 | 291.000000 | 0.008500 | 0.055274 | 0.000000 |
 | instant_meshes | controlled | medium_faces | SUCCESS | 14917.000000 | 29442.000000 | 1.000000 | 229.000000 | 0.005298 | 0.020810 | 2.845285 |
 | quadri_flow | controlled | low_faces | SUCCESS | 1278.000000 | 2522.000000 | 1.000000 | 12.000000 | 0.032853 | 0.217201 | 13.365892 |
