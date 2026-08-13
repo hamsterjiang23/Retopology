@@ -20,7 +20,10 @@ def f(value: str | None) -> str:
 
 def main() -> int:
     rows = list(csv.DictReader((FORMAL_ROOT / "reports" / "summary.csv").open(encoding="utf-8-sig")))
-    focus = [row for row in rows if row["method"] in {"instant_meshes", "quadri_flow", "blender_quadriflow"}]
+    focus_methods = {"instant_meshes", "quadri_flow", "blender_quadriflow"}
+    focus = [row for row in rows if row["method"] in focus_methods]
+    attempted_methods = {"autoremesher", "lato2", "meshanythingv2", "neurcross", "sato_tokenizer"}
+    attempted = [row for row in rows if row["method"] in attempted_methods and row["lane"] in {"raw", "controlled"}]
     lines = [
         "# Meshy 幽灵乐手：重拓扑 A/B 对照",
         "",
@@ -43,6 +46,19 @@ def main() -> int:
         "- controlled 通常比 raw 降低几何误差与组件碎裂，但不保证 watertight；组件数和边界边必须结合预览检查。",
         "- Blender 4.5.11 的同名 QuadriFlow operator 对四格均 FAILED，而原生 CLI 成功；这不是算法结论，而是入口/前置条件差异。",
         "- 生成式/研究路线必须等到有 candidate mesh 后才进入同一表格；仅有 tokenizer、论文或未完成权重不计作 SUCCESS。",
+        "",
+        "## 失败或组件级 A/B 记录",
+        "",
+        "这些路线确实在同一 raw/controlled 模型上启动过，但没有可解析的 candidate mesh；因此只保留退出状态和阻塞证据，不填几何分数。",
+        "",
+        "| 方法 | 输入线 | 预算 | 状态 | 退出/备注 |",
+        "|---|---|---|---|---|",
+    ]
+    for row in attempted:
+        lines.append(f"| {row['method']} | {row['lane']} | {row['budget']} | {row['status']} | {row.get('notes') or row.get('note') or row.get('error') or 'see run logs'} |")
+    lines += [
+        "",
+        "NeurCross 的 controlled Mac MPS 一次迭代 cross-field training 已完成，但官方 extraction 链没有产出最终网格；raw 在非流形邻接预计算失败，详见 `runs/controlled/neurcross/native` 与 `runs/raw/neurcross/native`。",
         "",
         "## 研究部署状态",
         "",
@@ -68,7 +84,7 @@ def main() -> int:
             {"method": "neurcross", "status": "COMPONENT_AB_TESTED", "evidence": "Mac controlled one-iteration cross-field training completed; raw failed in non-manifold rotation precompute; no final mesh extraction"},
             {"method": "quadwild", "status": "ENV_BLOCKED", "evidence": "source build blocked by unconditional gurobi_c++.h include"},
             {"method": "retopoflow", "status": "INTERACTIVE_ONLY", "evidence": "official Blender plugin cloned; not a stable batch adapter"},
-            {"method": "autoremesher", "status": "CLONED_NOT_RUN", "evidence": "official source cloned; native GUI/build adapter remains to be wired"},
+            {"method": "autoremesher", "status": "FAILED_COMPLEX_INPUT", "evidence": "official Windows binary and source cloned; official demo succeeds, but Meshy raw low/medium hit Windows access violation and controlled low/medium exited 1 without candidate"},
         ],
     }
     (FORMAL_ROOT / "reports" / "DEPLOYMENT_STATUS.json").write_text(json.dumps(deployment, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

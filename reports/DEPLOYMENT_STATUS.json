@@ -59,8 +59,8 @@
     },
     {
       "method": "autoremesher",
-      "status": "CLONED_NOT_RUN",
-      "evidence": "official source cloned; native GUI/build adapter remains to be wired"
+      "status": "FAILED_COMPLEX_INPUT",
+      "evidence": "official Windows binary and source cloned; official demo succeeds, but Meshy raw low/medium hit Windows access violation and controlled low/medium exited 1 without candidate"
     }
   ]
 }
