@@ -3,6 +3,10 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .venv/
+.venv-*/
 artifacts/
+inputs/
+*.log
+ 2/
 retopo_benchmark_outputs/
 vendor/*
