@@ -30,7 +30,7 @@
     {
       "method": "meshflow",
       "status": "ENV_BLOCKED",
-      "evidence": "official pins were unsatisfiable; corrected torch 2.7.1/torchvision 0.22.1 CUDA install is still running, and HF facebook/meshflow denied access: Mac HTTP 403, Windows HTTP 401"
+      "evidence": "official pins were unsatisfiable; corrected torch 2.7.1/torchvision 0.22.1 CUDA install was attempted but stalled before torch import, and HF facebook/meshflow denied access: Mac HTTP 403, Windows HTTP 401"
     },
     {
       "method": "lato2",

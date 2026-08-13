@@ -62,7 +62,7 @@ def main() -> int:
             {"method": "blender_quadriflow", "status": "FAILED", "evidence": "Blender 4.5.11 operator CANCELLED on all four inputs"},
             {"method": "sato_tokenizer", "status": "COMPONENT_TESTED", "evidence": "official test_tokenizer.py: 17 tests OK; no generator/checkpoint released"},
             {"method": "meshmosaic", "status": "ENV_BLOCKED", "evidence": "official repo cloned; README release todo still lists checkpoints/inference/preprocessing/training"},
-            {"method": "meshflow", "status": "ENV_BLOCKED", "evidence": "official pins were unsatisfiable; corrected torch 2.7.1/torchvision 0.22.1 CUDA install is still running, and HF facebook/meshflow denied access: Mac HTTP 403, Windows HTTP 401"},
+            {"method": "meshflow", "status": "ENV_BLOCKED", "evidence": "official pins were unsatisfiable; corrected torch 2.7.1/torchvision 0.22.1 CUDA install was attempted but stalled before torch import, and HF facebook/meshflow denied access: Mac HTTP 403, Windows HTTP 401"},
             {"method": "lato2", "status": "ENV_BLOCKED", "evidence": "Mac MPS smoke failed on missing TRELLIS o_voxel custom extension"},
             {"method": "meshanythingv2", "status": "FAILED_RESOURCE", "evidence": "Mac local checkpoints loaded; raw and controlled MPS plus CPU-fallback generation both terminated with code 137 before candidate output"},
             {"method": "neurcross", "status": "COMPONENT_AB_TESTED", "evidence": "Mac controlled one-iteration cross-field training completed; raw failed in non-manifold rotation precompute; no final mesh extraction"},
