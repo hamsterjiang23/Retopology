@@ -13,7 +13,18 @@ from pathlib import Path
 from typing import Any, Iterable
 
 
-STATUS = {"SUCCESS", "FAILED", "OUT_OF_BUDGET", "ENV_BLOCKED", "INTERACTIVE_ONLY"}
+STATUS = {
+    "SUCCESS",
+    "FAILED",
+    "OUT_OF_BUDGET",
+    "ENV_BLOCKED",
+    "INTERACTIVE_ONLY",
+    "AUTH_BLOCKED",
+    "LICENSE_BLOCKED",
+    "OFFICIAL_CODE_BLOCKED",
+    "COMPONENT_SUCCESS",
+    "CONTROLLED_DERIVED",
+}
 
 
 def sha256(path: Path) -> str:

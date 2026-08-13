@@ -98,12 +98,18 @@ def discovered_results(source: Path, out_root: Path) -> list[dict[str, Any]]:
                     note_match = re.search(r"NOTE=(.+)", run_status)
                     if note_match:
                         run_note = note_match.group(1).strip()
-                if output is None and "STATUS=FAILED" not in run_status:
+                status_match = re.search(r"STATUS=([A-Z_]+)", run_status)
+                declared_status = status_match.group(1) if status_match else ""
+                supported_statuses = {
+                    "FAILED", "AUTH_BLOCKED", "LICENSE_BLOCKED", "OFFICIAL_CODE_BLOCKED",
+                    "COMPONENT_SUCCESS", "CONTROLLED_DERIVED", "OUT_OF_BUDGET", "ENV_BLOCKED",
+                }
+                if output is None and declared_status not in supported_statuses:
                     continue
                 if output is None:
                     results.append({
                         "method": method_dir.name, "lane": lane_dir.name, "budget": budget_dir.name,
-                        "seed": 0, "status": "FAILED", "input_path": str(source), "output_path": None,
+                        "seed": 0, "status": declared_status or "FAILED", "input_path": str(source), "output_path": None,
                         "duration_s": duration, "command": [], "metrics": {}, "notes": run_note,
                         "error": run_note,
                     })
