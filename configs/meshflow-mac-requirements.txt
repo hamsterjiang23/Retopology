@@ -1,0 +1,14 @@
+# Apple Silicon adaptation: torchvision 0.22.1 requires torch 2.7.1 on PyPI.
+# CUDA-only extra index from the upstream file is intentionally omitted.
+torch==2.7.1
+torchvision==0.22.1
+diffusers==0.38.0
+einops==0.8.1
+omegaconf==2.3.0
+trimesh==4.10.1
+tqdm==4.67.3
+transformers==5.0.0rc3
+point-cloud-utils==0.34.0
+gradio==6.6.0
+huggingface_hub>=0.26.0
+plotly==6.5.2
